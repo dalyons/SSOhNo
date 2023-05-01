@@ -7,18 +7,40 @@
         font-family: Arial, sans-serif;
         width: 400px;
       }
+      h2 {
+        margin-bottom: 0.5em;
+      }
     </style>
   </head>
+
   <body>
-    <h1>Options</h1>
-    <label for="buttonSelectors">Button Selectors (comma-separated):</label>
-    <br />
-    <input type="text" id="buttonSelectors" name="buttonSelectors" />
-    <br />
-    <label for="closeUrls">Close Tab on URL Match (comma-separated):</label>
-    <br />
-    <input type="text" id="closeUrls" name="closeUrls" />
-    <br />
+    <h1>SSNO Options</h1>
+    <div class=auto-clickers>
+      <h2>SSO auto button click</h2>
+      <input type="checkbox" id="github" name="github" />
+      <label for="github">github.com</label><br />
+      <input type="checkbox" id="sdm" name="sdm" />
+      <label for="sdm">sdm</label><br />
+      <input type="checkbox" id="interchange" name="interchange" />
+      <label for="interchange">interchange</label><br />
+      <br /><br />
+      <label for="additionalMatchersAutofollow">Additional Matchers(comma seperated):</label><br />
+      <textarea id="additionalMatchersAutofollow" name="additionalMatchersAutofollow" rows="4" cols="50"></textarea>
+      <br /><br />
+      <br /><br />
+    </div>
+    <div class=tab-closers>
+      <h2>SSO tab closers</h2>
+      <input type="checkbox" id="sdmClose" name="sdmClose" value="app.strongdm.com/app/auth/complete" />
+      <label for="sdmClose">sdm</label><br />
+      <input type="checkbox" id="zoom" name="zoom" value="zoom.us*success"/>
+      <label for="zoom">zoom.us</label><br />
+      <input type="checkbox" id="globalProtect" name="globalProtect" value="gpcloudservice.com/SAML20/SP/ACS"/>
+      <label for="globalProtect">global protect</label><br />
+      <br /><br />
+      <label for="additionalMatchersClosers">Additional url fragment matchers(comma seperated, allows * as wildcard):</label><br />
+      <textarea id="additionalMatchersClosers" name="additionalMatchersClosers" rows="4" cols="50"></textarea>
+    </div>
     <button id="saveButton">Save</button>
     <script src="options.js"></script>
   </body>
