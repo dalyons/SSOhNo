@@ -10,11 +10,18 @@
 
   function closeTabIfUrlMatches(closeUrls) {
     const currentUrl = window.location.href;
-    const shouldCloseTab = closeUrls.some(url => currentUrl.includes(url));
+    const currentFragment = window.location.hash;
+    const urlWithFragment = currentFragment ? currentUrl + currentFragment : currentUrl;
+
+    function urlMatchesPattern(url, pattern) {
+      const regex = new RegExp(pattern.split('*').map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*'));
+      return regex.test(url);
+    }
+
+	
+    const shouldCloseTab = closeUrls.some(url => urlMatchesPattern(urlWithFragment, url));
     if (shouldCloseTab) {
-      setTimeout(function() {
-        chrome.runtime.sendMessage({ action: 'close_tab' });
-      }, 3000);
+      chrome.runtime.sendMessage({ action: 'close_tab' });
     }
   }
 
@@ -35,7 +42,9 @@
     }
 
     if (closeUrls) {
-      closeTabIfUrlMatches(closeUrls);
+      setTimeout(function() {
+        closeTabIfUrlMatches(closeUrls);
+      }, 2000);
     }
   });
 })();

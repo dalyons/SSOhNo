@@ -1,12 +1,11 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Auto-click Multiple Buttons",
   "version": "1.0",
   "description": "Automatically clicks on buttons with specified ids if they appear on the page.",
   "options_page": "options.html",
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
