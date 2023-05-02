@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  function autoClickButtons(buttonSelectors) {
-    buttonSelectors.forEach(selector => {
+  function autoClickButtons(selectors) {
+    selectors.forEach(selector => {
       const buttons = document.querySelectorAll(selector);
       buttons.forEach(button => button.click());
     });
   }
 
-  function closeTabIfUrlMatches(closeUrls) {
+  function closeTabIfUrlMatches(urls) {
     const currentUrl = window.location.href;
     const currentFragment = window.location.hash;
     const urlWithFragment = currentFragment ? currentUrl + currentFragment : currentUrl;
@@ -19,20 +19,20 @@
     }
 
 	
-    const shouldCloseTab = closeUrls.some(url => urlMatchesPattern(urlWithFragment, url));
+    const shouldCloseTab = urls.some(url => urlMatchesPattern(urlWithFragment, url));
     if (shouldCloseTab) {
       chrome.runtime.sendMessage({ action: 'close_tab' });
     }
   }
 
-  chrome.storage.sync.get(['buttonSelectors', 'closeUrls'], ({ buttonSelectors, closeUrls }) => {
-    if (buttonSelectors) {
-      autoClickButtons(buttonSelectors);
+  chrome.storage.sync.get(['autoButtonClickSelectors', 'autoCloseUrls'], ({ autoButtonClickSelectors, autoCloseUrls }) => {
+    if (autoButtonClickSelectors) {
+      autoClickButtons(autoButtonClickSelectors);
 
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
           if (mutation.type === 'childList') {
-            autoClickButtons(buttonSelectors);
+            autoClickButtons(autoButtonClickSelectors);
             break;
           }
         }
@@ -41,9 +41,9 @@
       observer.observe(document.body, { childList: true, subtree: true });
     }
 
-    if (closeUrls) {
+    if (autoCloseUrls) {
       setTimeout(function() {
-        closeTabIfUrlMatches(closeUrls);
+        closeTabIfUrlMatches(autoCloseUrls);
       }, 2000);
     }
   });

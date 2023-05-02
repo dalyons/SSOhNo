@@ -1,46 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Auto-click Multiple Buttons - Options</title>
+    <title>SSOhNo - Options</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         width: 400px;
       }
-      h2 {
-        margin-bottom: 0.5em;
+      div {
+        padding-bottom: 20px;
       }
     </style>
   </head>
-
   <body>
-    <h1>SSNO Options</h1>
-    <div class=auto-clickers>
-      <h2>SSO auto button click</h2>
-      <input type="checkbox" id="github" name="github" />
-      <label for="github">github.com</label><br />
-      <input type="checkbox" id="sdm" name="sdm" />
-      <label for="sdm">sdm</label><br />
-      <input type="checkbox" id="interchange" name="interchange" />
-      <label for="interchange">interchange</label><br />
-      <br /><br />
-      <label for="additionalMatchersAutofollow">Additional Matchers(comma seperated):</label><br />
-      <textarea id="additionalMatchersAutofollow" name="additionalMatchersAutofollow" rows="4" cols="50"></textarea>
-      <br /><br />
-      <br /><br />
-    </div>
-    <div class=tab-closers>
-      <h2>SSO tab closers</h2>
-      <input type="checkbox" id="sdmClose" name="sdmClose" value="app.strongdm.com/app/auth/complete" />
-      <label for="sdmClose">sdm</label><br />
-      <input type="checkbox" id="zoom" name="zoom" value="zoom.us*success"/>
-      <label for="zoom">zoom.us</label><br />
-      <input type="checkbox" id="globalProtect" name="globalProtect" value="gpcloudservice.com/SAML20/SP/ACS"/>
-      <label for="globalProtect">global protect</label><br />
-      <br /><br />
-      <label for="additionalMatchersClosers">Additional url fragment matchers(comma seperated, allows * as wildcard):</label><br />
-      <textarea id="additionalMatchersClosers" name="additionalMatchersClosers" rows="4" cols="50"></textarea>
-    </div>
+    <h1>SSOhNo Options</h1>
+    <h2>Auto-click SSO Buttons</h2>
+    <div id="checkboxList"></div>
+    <label for="customSelectors">Custom Button Selectors(comma delimit):</label><br />
+    <textarea id="customSelectors" name="customSelectors" rows="4" cols="50"></textarea>
+    <h2>Auto-close SSO Tabs</h2>
+    <div id="urlCheckboxList"></div>
+    <label for="customUrls">Custom URLs(comma delimit, accepts * wildcards):</label><br />
+    <textarea id="customUrls" name="customUrls" rows="4" cols="50"></textarea>
     <button id="saveButton">Save</button>
     <script src="options.js"></script>
   </body>
