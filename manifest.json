@@ -14,7 +14,8 @@
     "autoCloseUrlsConf": {
       "globalprotect": "gpcloudservice.com/SAML20/SP/ACS",
       "zoom": "zoom.us*success",
-      "sdm": "app.strongdm.com/app/auth/complete"
+      "sdm": "app.strongdm.com/app/auth/complete",
+      "notion_native": "https://www.notion.so/native"
     }
   },
   "content_scripts": [
