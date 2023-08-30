@@ -9,13 +9,15 @@
     "autoClickButtonConf": {
       "github": "div.org-sso-panel > form > button",
       "sdm": "#root > div > div.region._column_1nteo_5._s4_1nteo_148._justify--initial_1nteo_10._align--initial_1nteo_60._flex_1nteo_117._nowrap_1nteo_126 > div.region._contentCard_1e95a_22 > div > div > div.region.sdm--subtitle2--alt._column_1nteo_5._s2_1nteo_142._justify--initial_1nteo_10._align--initial_1nteo_60._flex_1nteo_117._nowrap_1nteo_126 > button",
-      "interchange": "#mainContainer .login-container button"
+      "interchange": "#mainContainer .login-container button",
+      "aws": "button#cli_login_button.awsui-button"
     },
     "autoCloseUrlsConf": {
       "globalprotect": "gpcloudservice.com/SAML20/SP/ACS",
       "zoom": "zoom.us*success",
       "sdm": "app.strongdm.com/app/auth/complete",
-      "notion_native": "https://www.notion.so/native"
+      "notion_native": "https://www.notion.so/native",
+      "aws": "https://*.awsapps.com/start/user-consent/login-success.html"
     }
   },
   "content_scripts": [
